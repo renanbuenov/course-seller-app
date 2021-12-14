@@ -1,0 +1,75 @@
+<div class="modal fade" id="courseModal" tabIndex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && saveCourse()">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Curso Detalhes</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="alert alert-danger" *ngIf="errorMessage">
+            <strong>Error!</strong> {{errorMessage}}
+          </div>
+
+          <div class="form-group">
+            <label for="title">Nome Curso</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="title"
+              name="title"
+              [(ngModel)]="course.title"
+              #title="ngModel"
+              required
+            />
+            <div class="alert-danger" *ngIf="f.submitted && !title.valid">
+              Nome do curso é obrigatório.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subtitle">Conteúdo do curso</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="subtitle"
+              name="subtitle"
+              [(ngModel)]="course.subtitle"
+              #subtitle="ngModel"
+              required
+            />
+            <div class="alert-danger" *ngIf="f.submitted && !subtitle.valid">
+              Conteúdo do curso é obrigatório.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Preço</label>
+            <input
+              type="number"
+              class="form-control mb-2"
+              id="price"
+              name="price"
+              [(ngModel)]="course.price"
+              #price="ngModel"
+              required
+            />
+            <div class="alert-danger" *ngIf="f.submitted && (!price.valid || course.price <= 0)">
+              Preço é obrigatório e deve ser maior que R$ 0.00.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

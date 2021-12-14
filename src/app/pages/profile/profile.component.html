@@ -1,1 +1,47 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="pt-5">
+
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      {{errorMessage}}
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+
+        <div class="row">
+          <div class="col-6">
+            <h3>Meus cursos</h3>
+          </div>
+          <div class="col-6 text-end">
+            Logado como <strong>{{currentUser?.role}} </strong>
+            <button class="btn btn-primary" (click)="changeRole()">Mudar conta</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome Curso</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Data</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of purchaseList; index as ind">
+            <th scope="row">{{ind + 1}}</th>
+            <td>{{item.title}}</td>
+            <td>{{item.price | currency: 'BRL'}}</td>
+            <td>{{item.purchaseTime | date: 'medium'}}</td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

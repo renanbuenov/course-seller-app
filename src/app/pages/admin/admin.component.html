@@ -1,1 +1,60 @@
-<p>admin works!</p>
+<div class="container">
+  <div class="pt-5">
+
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      {{errorMessage}}
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+
+        <div class="row">
+
+          <div class="col-6">
+            <h3>Todos os cursos</h3>
+          </div>
+
+          <div class="col-6 text-end">
+            <button class="btn btn-primary" (click)="createCourseRequest()">Criar curso</button>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome Curso</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Data</th>
+            <th scope="col">Ação</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of courseList; index as ind">
+            <th scope="row">{{ind + 1}}</th>
+            <td>{{item.title}}</td>
+            <td>{{item.price | currency: 'BRL'}}</td>
+            <td>{{item.createTime | date: 'medium'}}</td>
+            <td>
+              <button class="btn btn-primary me-1" (click)="editCourseRequest(item)">Editar</button>
+              <button class="btn btn-danger" (click)="deleteCourseRequest(item)">Deletar</button>
+            </td>
+          </tr>
+          </tbody>
+
+
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<app-course-save [course]="selectedCourse" (save)="saveCourseWatcher($event)"></app-course-save>
+
+<app-course-delete (confirmed)="deleteCourse()"></app-course-delete>

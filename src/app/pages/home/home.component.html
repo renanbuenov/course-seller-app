@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="container p-3">
+
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+
+  <div class="alert alert-success" *ngIf="infoMessage">
+    {{infoMessage}}
+  </div>
+
+  <div class="d-flex flex-wrap">
+    <div
+      *ngFor="let item of courseList; index as ind"
+      class="card m-3" style="width: 300px; background-color: #f8f7f7;">
+
+      <div class="card-body">
+        <h5 class="card-title text-uppercase">{{item.title}}</h5>
+        <div class="card-subtitle text-muted">{{item.subtitle}}</div>
+      </div>
+
+      <fa-icon [icon]="faLaptopCode" class="ms-auto me-auto course-icon"></fa-icon>
+
+      <div class="row mt-2 p-3">
+        <div class="col-6 mt-2 ps-4">
+          {{item.price | currency: 'BRL'}}
+        </div>
+        <div class="col-6">
+          <button class="btn btn-outline-success w-100" (click)="purchase(item)">
+            Comprar
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

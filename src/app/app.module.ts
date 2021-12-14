@@ -11,6 +11,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import { CourseSaveComponent } from './components/course-save/course-save.component';
+import { CourseDeleteComponent } from './components/course-delete/course-delete.component';
+import {authInterceptorProviders} from "./interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -21,14 +26,18 @@ import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.compone
     ProfileComponent,
     AdminComponent,
     NotFoundComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    CourseSaveComponent,
+    CourseDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
