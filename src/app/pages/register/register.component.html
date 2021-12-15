@@ -1,11 +1,11 @@
-<div class="container mt-5">
-  <div class="card ms-auto me-auto p-3 shadow-lg custom-card">
+<div class="container mt-5 p-2">
+  <div class="card ms-auto me-auto p-3 shadow-lg custom-card" style="border-radius: 10px">
     <fa-icon [icon]="faUser" class="fa-7x ms-auto me-auto user-icon"></fa-icon>
 
     <form #f="ngForm" (ngSubmit)="f.form.valid && register()">
 
       <div class="alert alert-danger" *ngIf="errorMessage">
-        {{errorMessage}}
+        Usuário informado já existe!
       </div>
 
       <div class="form-group">
@@ -67,4 +67,5 @@
     </a>
 
   </div>
+  <p class="dev-mark">Developed by Renan Bueno</p>
 </div>

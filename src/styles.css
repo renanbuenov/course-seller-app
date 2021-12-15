@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 /*@import "~bootstrap/dist/css/bootstrap.min.css";*/
+.dev-mark {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  opacity: 50%;
+}
